@@ -1,9 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-
+.root{
+position: relative;
+min-height:667px ;
+}
 * {
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 html, body, div, span, applet, object, iframe,

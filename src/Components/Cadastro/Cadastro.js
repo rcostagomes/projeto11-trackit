@@ -1,10 +1,32 @@
-import { Link } from "react-router-dom"
+import axios from "axios"
+import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import logo from "../../assets/img/logo.png"
 export default function Cadastro(props){
-const {setNome,setEmail,setPerfil,setSenha} = props
+const {setNome,email,nome,senha,perfil,setEmail,setPerfil,setSenha,disable,setDisable} = props
+const navigate = useNavigate();
+function cadastrar(event){
+    setDisable(true)
+    event.preventDefault();
+const promise = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up`,{
+	email: `${email}`,
+	name: `${email}` ,
+	image: `${perfil}` ,
+	password: `${senha}`
+});
+promise.then((response)=>{cadastrou(response)})
+promise.catch((err)=> console.log(err.data.response))
 
-function cadastrar(){
+console.log(email)
+console.log(senha)
+console.log(perfil)
+console.log(nome)
+}
+
+function cadastrou(response){
+    console.log(response)
+    setDisable(false)
+    navigate("/")
 
 }
 
@@ -18,7 +40,9 @@ return(
 <input type= "password" placeholder="senha" onChange={(e)=> setSenha(e.target.value)} />
 <input type="text" placeholder="name" onChange={(e)=> setNome(e.target.value)} />
 <input type="url" placeholder="foto" onChange={(e)=> setPerfil(e.target.value)} />
-<button type="submit" > Cadastrar </button>
+<button type="submit" disabled = {disable}> 
+ 
+ <p> Cadastrar</p>  </button>
 
 </form> 
 <Link to = "/" > 
