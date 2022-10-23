@@ -6,6 +6,7 @@ import ContextUser from "../../Context/ContextUser";
 import Cadastro from "../Cadastro/Cadastro";
 import GlobalStyle from "../GlobalStyle";
 import Habitos from "../Habitos/Habitos";
+import Historico from "../Historico/Historico";
 import Hoje from "../Hoje/Hoje";
 import Login from "../Login/Login";
 
@@ -35,7 +36,7 @@ const [token,setToken ] = useState("")
 <Route path= "/cadastro" element = {<Cadastro perfil={perfil} setPerfil={setPerfil}  disable={disable} setDisable={setDisable} nome = {nome} setNome={setNome} email={email} setEmail={setEmail} senha={senha} setSenha={setSenha}  />}></Route>
 <Route path= "/habitos" element = {<Habitos token={token} />}></Route>
 <Route path= "/hoje" element = {<Hoje token={token} />}></Route>
-
+<Route path= "/historico" element = {<Historico/>}></Route>
 </Routes>
 </BrowserRouter>
     
