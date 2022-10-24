@@ -1,4 +1,5 @@
 import axios from "axios"
+import { ThreeDots } from "react-loader-spinner"
 import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import logo from "../../assets/img/logo.png"
@@ -15,7 +16,7 @@ const promise = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/t
 	password: `${senha}`
 });
 promise.then((response)=>{cadastrou(response)})
-promise.catch((err)=> console.log(err.data.response))
+promise.catch((err)=> alert("Preencha os campos corretamente"), setDisable(false) )
 
 console.log(email)
 console.log(senha)
@@ -40,9 +41,19 @@ return(
 <input type= "password" placeholder="senha" onChange={(e)=> setSenha(e.target.value)} />
 <input type="text" placeholder="name" onChange={(e)=> setNome(e.target.value)} />
 <input type="url" placeholder="foto" onChange={(e)=> setPerfil(e.target.value)} />
-<button type="submit" disabled = {disable}> 
+<button style={{alignItens:"Center"}} type="submit" disabled = {disable}> 
+{disable === true ? <ThreeDots 
+height="36" 
+width="36" 
+radius="9"
+color="white" 
+ariaLabel="three-dots-loading"
+wrapperStyle={{}}
+wrapperClassName=""
+visible={true}
+ /> : 
  
- <p> Cadastrar</p>  </button>
+ <p> Cadatrar </p> } </button>
 
 </form> 
 <Link to = "/" > 
@@ -106,7 +117,9 @@ line-height: 26px;
 text-align: center;
 cursor: pointer;
 color: #FFFFFF;
-
+align-items: center;
+justify-content: center;
+display: flex;
 }
 form {
     display: flex;

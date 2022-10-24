@@ -23,7 +23,10 @@ return(
 }
 
 const NavBar = styled.div`
+position: fixed;
+z-index: 1;
 width: 100%;
+margin-bottom: 70px;
 height: 70px;
 display: flex;
 align-items: center;

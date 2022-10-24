@@ -3,6 +3,7 @@ import { useState } from "react";
 import { BrowserRouter, Route, Routes  } from "react-router-dom";
 import ContextInfo from "../../Context/ContextInfo";
 import ContextUser from "../../Context/ContextUser";
+import PorcentagemContext from "../../Context/PorcentagemContext";
 import Cadastro from "../Cadastro/Cadastro";
 import GlobalStyle from "../GlobalStyle";
 import Habitos from "../Habitos/Habitos";
@@ -25,10 +26,12 @@ const [nome, setNome] = useState("")
 const [perfil, setPerfil] = useState("")
 const [imagem, setImagem ] = useState("https://thumbs.dreamstime.com/b/%C3%ADcone-do-usu%C3%A1rio-do-vetor-7337510.jpg")
 const [token,setToken ] = useState("")
+const [porcentagem, setPorcentagem] = useState(0);
   return (
     <> 
   <ContextInfo.Provider value={{ info, setInfos }}> 
   <ContextUser.Provider value={{ imagem, setImagem }}>
+  <PorcentagemContext.Provider value={{ porcentagem, setPorcentagem }}>
 <GlobalStyle/>
 <BrowserRouter>
 <Routes>
@@ -39,7 +42,7 @@ const [token,setToken ] = useState("")
 <Route path= "/historico" element = {<Historico/>}></Route>
 </Routes>
 </BrowserRouter>
-    
+</PorcentagemContext.Provider>
 </ContextUser.Provider>
 </ContextInfo.Provider>
   </>

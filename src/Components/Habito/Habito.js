@@ -12,11 +12,9 @@ function salvarInfos(props){
 console.log(num)
  if (selecionado === true){
     setSelecionado(false)
-    setDisponivel(true)
     setArrayDays([...arrayDays.filter((ID)=> ID !== num)])
  }else{
     setSelecionado(true)
-    setDisponivel(false)
     setArrayDays([...arrayDays,num])
  }
     
@@ -32,7 +30,7 @@ return(
 function Days(props){
 const {arrayDays,setArrayDays,allDays,setDisponivel } = props
 
-const day =  allDays.map((id)=>{console.log(id); return( <Day setDisponivel={setDisponivel} arrayDays={arrayDays} setArrayDays={setArrayDays}  day={id} name={id.dia} key={id.num}  >      </Day> )})
+const day =  allDays.map((id)=>{ return( <Day setDisponivel={setDisponivel} arrayDays={arrayDays} setArrayDays={setArrayDays}  day={id} name={id.dia} key={id.num}  >      </Day> )})
 
 return(<>{day}</>)}
 
@@ -48,13 +46,13 @@ const [newHabito, setNewHabito] = useState([])
 
 
 const allDays = [
-    {dia:"D" , num:1,},
-    {dia:"S" , num:2, },
-    {dia:"T" , num:3, },
-    {dia:"Q",  num:4, },
-    {dia:"Q" , num:5, },
-    {dia:"S" , num:6, },
-    {dia:"S" , num:7, },
+    {dia:"D" , num:0},
+    {dia:"S" , num:1},
+    {dia:"T" , num:2},
+    {dia:"Q",  num:3},
+    {dia:"Q" , num:4},
+    {dia:"S" , num:5},
+    {dia:"S" , num:6},
     ]
 
 
@@ -77,7 +75,6 @@ promise.catch((err)=> console.log("DEU RUIM", err))
 setHabilitado(false)
 }
 
-console.log(newHabito)
 useEffect(()=> getHabitos(),[])
 
 
@@ -177,6 +174,7 @@ color: #666666;
 }
 `
 const Adicionar = styled.div`
+margin-top: 70px;
 width: 100%;
 height: 70px;
 display: flex;

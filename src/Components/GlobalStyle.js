@@ -2,7 +2,6 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 .root{
-position: relative;
 min-height:667px ;
 }
 * {
